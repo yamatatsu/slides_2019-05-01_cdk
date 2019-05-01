@@ -3,7 +3,4 @@ node_modules
 .cache
 .DS_Store
 
-dist/*
-!dist/android-chrome-192x192.png
-!dist/apple-touch-icon-152x152.png
-!dist/favicon.ico
+dist
