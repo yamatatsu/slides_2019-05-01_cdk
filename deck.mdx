@@ -1,0 +1,337 @@
+import { Head, Image } from 'mdx-deck'
+import { Container, Row, Col } from 'react-grid-system'
+import HeadContents from '../../components/HeadContents.js'
+import Top from '../../components/Top.js'
+import ExLink from '../../components/ExLink.js'
+import SandBox from './components/SandBox'
+import packageJson from './package.json'
+import ogImage from './assets/images/og.png'
+
+export { default as theme } from '@mdx-deck/themes/base'
+
+<Head>
+  <HeadContents
+    title={packageJson.slideTitle}
+    urlPath={packageJson.slideKey}
+    image={ogImage}
+  />
+</Head>
+
+<Top title={packageJson.slideTitle} eventName="WeJS #31" hashtag="WeJS" />
+
+---
+
+## 今日話すこと
+
+---
+
+- Partial
+- Required
+- Pick
+- Readonly
+- Record
+- Exclude
+- Extract
+- NonNullable
+- ReturnType
+- InstanceType
+- ThisType
+
+---
+
+## 多い
+
+---
+
+## 5 分
+
+---
+
+## はじめます
+
+---
+
+## Partial
+
+---
+
+<SandBox
+  initial={`// Partial<T>\n
+type Customer = { id: string, name: string, age: number }
+\n// エラーになる
+const c1: Customer = { id: '123', name: '太郎' }
+\n// エラーにならない
+const c2: Partial<Customer> = { id: '123', name: '太郎' }
+`}
+/>
+
+---
+
+## Required
+
+---
+
+<SandBox
+  initial={`// Required<T>\n
+type Customer = { id: string, name: string, age: number }
+\n// エラーになる
+const c1: Customer = { id: '123', name: '太郎' }
+\n// エラーにならない
+const c2: Partial<Customer> = { id: '123', name: '太郎' }
+\n// エラーになる
+const c3: Required<Partial<Customer>> = { id: '123', name: '太郎' }
+`}
+/>
+
+---
+
+## Pick
+
+---
+
+<SandBox
+  initial={`// Pick<T,K>\n
+type Customer = { id: string, name: string, age: number }
+\n// エラーになる
+const c1: Customer = { id: '123', name: '太郎' }
+\n// エラーにならない
+const c2: Pick<Customer,'id'|'name'> = { id: '123', name: '太郎' }
+`}
+/>
+
+---
+
+## Readonly
+
+---
+
+<SandBox
+  initial={`// Readonly<T>\n
+type Customer = { id: string, name: string, age: number }
+\n// エラーにならない
+const c1: Customer = { id: '123', name: '太郎', age: 28 }
+c1.age = 29
+\n// エラーになる
+const c2: Readonly<Customer> = { id: '123', name: '太郎', age: 28 }
+c2.age = 29
+`}
+/>
+
+---
+
+## Record
+
+---
+
+<SandBox
+  initial={`// Record<K,T>\n
+type Color = 'red' | 'green' | 'blue'
+\n// こうだったのが
+type ColorCodes1 = { [key in Color]: string }
+\n// こう書ける
+type ColorCodes2 = Record<Color, string>
+\nconst colorCodes: ColorCodes2 = {
+  red: '#ff0000',
+  green: '#00ff00',
+  blue: '#0000ff',
+  yellow: '#ffff00'
+}
+`}
+/>
+
+---
+
+## Exclude
+
+---
+
+<SandBox
+  initial={`// Exclude<T,U>\n
+type Color = 'red' | 'green' | 'blue' | 'yellow' | 'purple'
+\n// 3原色以外
+type ColorWithoutRGB = Exclude<Color, 'red' | 'green' | 'blue'>
+\n// エラーになる
+const color1: ColorWithoutRGB = 'red'
+\n// エラーにならない
+const color2: ColorWithoutRGB = 'yellow'
+`}
+/>
+
+---
+
+## Extract
+
+---
+
+<SandBox
+  initial={`// Extract<T,U>\n
+\n// 光の三原色
+type ThreePrimaryLightColor = 'red' | 'green' | 'blue'
+// 色の三原色
+type ThreePrimaryColor = 'red' | 'blue' | 'yellow'
+\n// 共通項
+type CommonColor = Extract<ThreePrimaryLightColor, ThreePrimaryColor>
+\n// エラーにならない
+const color1: CommonColor = 'red'
+\n// エラーになる
+const color2: CommonColor = 'yellow'
+`}
+/>
+
+---
+
+## NonNullable
+
+---
+
+<SandBox
+  initial={`// NonNullable<T>\n
+type Name = NonNullable<string | null | undefined>
+\n// エラーになる
+const name1: Name = null
+\n// エラーにならない
+const name2: Name = '太郎'
+`}
+/>
+
+---
+
+## ReturnType
+
+---
+
+<SandBox
+  initial={`// ReturnType<T>\n
+function toString(n: number) {
+  return n.toString()
+}
+\n// 戻り値型が取れる
+type Ret = ReturnType<typeof toString>
+\n// Connectの型とかに使えそう(↓は適当)
+type Connect =
+  <S, D>(mapStateToProps: S, mapDispatchToProps: D) =>
+    (c: ComponentType<ReturnType<S> & ReturnType<D>>) => JSX
+`}
+/>
+
+---
+
+## InstanceType
+
+---
+
+<SandBox
+  initial={`// InstanceType<T>\n
+class Customer {
+  private id: string
+  private name: string
+  private age?: number
+  constructor(id: string, name: string, age?: number) {
+    this.id = id
+    this.name = name
+    this.age = age
+  }
+}
+const taro: InstanceType<typeof Customer> = new Customer('123', '太郎')
+`}
+/>
+
+---
+
+何につかうんだろ。。。。
+
+---
+
+わからん 😇
+
+---
+
+## ThisType
+
+---
+
+<SandBox
+  initial={`// ThisType<T>
+// tsの公式からパクってきた\n
+type ObjectDescriptor<D, M> = {
+  data?: D;
+  methods?: M & ThisType<D & M>;  // Type of 'this' in methods is D & M
+}\n
+function makeObject<D, M>(desc: ObjectDescriptor<D, M>): D & M {
+  let data: object = desc.data || {};
+  let methods: object = desc.methods || {};
+  return { ...data, ...methods } as D & M;
+}\n
+let obj = makeObject({
+  data: { x: 0, y: 0 },
+  methods: {
+    moveBy(dx: number, dy: number) {
+      this.x += dx; // Strongly typed this
+      this.y += dy; // Strongly typed this
+    }
+  }
+});\n
+obj.x = 10;
+obj.y = 20;
+obj.moveBy(5, 5);
+\n// command + enter で実行できる
+alert(JSON.stringify(obj))
+`}
+/>
+
+---
+
+何につかうんだろ。。。。
+
+---
+
+Vue でこんな感じの API 見たことあんな 🤔
+
+---
+
+<SandBox
+  initial={`// ThisType<T>
+\n// vueの公式からパクってきた
+// このコードでthisをはめてみよう！
+const vueue = {
+  data: { a: 1 },
+  computed: {
+    aDouble: function () {
+      return this.a \* 2
+    }
+  }
+}\n
+// type Vueue<D, M> = {
+//   data: D
+//   computed: M & ThisType<D & M>
+// }
+// function makeVueue<D, M>(vueue: Vueue<D, M>): D & M {
+//   return { ...vueue.data, ...vueue.computed } as D & M;
+// }\n
+`}
+/>
+
+---
+
+<ExLink href="https://www.typescriptlang.org/docs/handbook/utility-types.html">
+  tsのbuiltin typeはここに載ってる
+</ExLink>
+
+---
+
+<img
+  src="https://i.gyazo.com/87d23d84bc93c83bb165c9d2f239f703.png"
+  width="275"
+/>
+
+- <ExLink href="https://cureapp.co.jp">CureApp</ExLink>
+- アプリで医療機器を作ってる
+- TS, react, RN, Node.js, MongoDB
+
+---
+
+## おわり。
+
+---
+
+ご清聴ありがとうございました！！

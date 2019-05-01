@@ -1,0 +1,28 @@
+{
+  "name": "2019-05-01_cdk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "slideKey": "cdk",
+  "slideTitle": "AWS CDK",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build --no-html -d ./dist/$npm_package_slideKey --basepath=/$npm_package_slideKey deck.mdx"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/parser": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/standalone": "^7.4.4",
+    "file-loader": "^3.0.1",
+    "json-loader": "^0.5.7",
+    "json-stringify-pretty-compact": "^2.0.0",
+    "mdx-deck": "2.x.x",
+    "monaco-editor-webpack-plugin": "^1.7.0",
+    "prerender-spa-plugin": "^3.4.0",
+    "prettier": "^1.17.0",
+    "react-grid-system": "^4.4.5",
+    "react-monaco-editor": "^0.25.1"
+  }
+}
