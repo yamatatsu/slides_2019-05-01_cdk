@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import { Head } from 'mdx-deck'
-import PulseLoader from 'react-spinners/PulseLoader'
 import ExLink from './ExLink'
 import lodingImage from './loading.png'
 

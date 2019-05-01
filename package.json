@@ -7,7 +7,7 @@
   "slideTitle": "AWS CDK",
   "scripts": {
     "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build --no-html -d ./dist/$npm_package_slideKey --basepath=/$npm_package_slideKey deck.mdx"
+    "build": "mdx-deck build --no-html deck.mdx"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -15,6 +15,7 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-typescript": "^7.3.3",
     "@babel/standalone": "^7.4.4",
+    "copy-webpack-plugin": "^5.0.3",
     "file-loader": "^3.0.1",
     "json-loader": "^0.5.7",
     "json-stringify-pretty-compact": "^2.0.0",
