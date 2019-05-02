@@ -8,5 +8,4 @@
   status = 200
 [[redirects]]
   from = "/*"
-  to = "/cdk/"
-  status = 302
+  to = "/cdk/0"
