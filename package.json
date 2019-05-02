@@ -7,7 +7,7 @@
   "slideTitle": "AWS CDK",
   "scripts": {
     "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build --no-html deck.mdx"
+    "build": "mdx-deck build --no-html --basepath=/$npm_package_slideKey deck.mdx"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.3",

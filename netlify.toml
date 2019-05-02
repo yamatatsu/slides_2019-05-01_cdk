@@ -3,6 +3,10 @@
   functions = "functions"
   publish = "dist"
 [[redirects]]
+  from = "/cdk/:page"
+  to = "/index.html"
+  status = 200
+[[redirects]]
   from = "/:page"
   to = "/index.html"
   status = 200
