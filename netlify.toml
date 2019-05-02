@@ -6,6 +6,3 @@
   from = "/cdk/:page"
   to = "/index.html"
   status = 200
-[[redirects]]
-  from = "/"
-  to = "/cdk/0"
