@@ -4,5 +4,5 @@
   publish = "dist"
 [[redirects]]
   from = "/:page"
-  to = "/index.html"
+  to = "/cdk/index.html"
   status = 200
