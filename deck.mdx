@@ -5,8 +5,7 @@ import Top from './components/Top.js'
 import ExLink from './components/ExLink.js'
 import packageJson from './package.json'
 import ogImage from './assets/images/og.png'
-
-export { default as theme } from '@mdx-deck/themes/base'
+import { CodeSurfer } from 'mdx-deck-code-surfer'
 
 <Head>
   <HeadContents
@@ -33,6 +32,22 @@ export { default as theme } from '@mdx-deck/themes/base'
 ---
 
 ## はじめます
+
+---
+
+<CodeSurfer
+  title="Some Title"
+  code={require('!raw-loader!./assets/codes/static-site.ts').default}
+  lang="typescript"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { notes: 'Start with this note' },
+    { lines: [6], notes: 'Note for the first step' },
+    { range: [5, 9] },
+    { tokens: { 9: [3, 4, 5] }, notes: 'Note for the third step' },
+  ]}
+/>
 
 ---
 
