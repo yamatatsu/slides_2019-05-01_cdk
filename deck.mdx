@@ -70,6 +70,8 @@ TS の型に導かれる
 
 ---
 
+### 注意 !!!
+
 <img src={awsCdkCautionImage} style={{ width: '90vw' }} />
 
 ---
@@ -185,14 +187,24 @@ TS の型に導かれる
   theme={theme}
   steps={[
     {},
-    { range: [10, 14] },
-    { range: [16, 19] },
-    { tokens: { 10: [2], 18: [0, 1, 2] } },
-    { range: [21, 32] },
-    { tokens: { 10: [2], 27: [4, 5, 6] } },
-    { range: [34, 39] },
+    { range: [9, 13] },
+    { range: [15, 17] },
+    { tokens: { 9: [2], 16: [0, 1, 2] } },
+    { range: [19, 24] },
     {},
   ]}
+/>
+
+---
+
+<CodeSurfer
+  title="hoge.js"
+  code={
+    require('!raw-loader!./assets/codes/lambda-rest-api-function.ts').default
+  }
+  lang="javascript"
+  showNumbers={showNumbers}
+  theme={theme}
 />
 
 ---
@@ -206,6 +218,16 @@ TS の型に導かれる
 <ExLink href="https://github.com/yamatatsu/cdk-lambda-rest-api-sample">
   コードはこちら
 </ExLink>
+
+---
+
+## まとめ
+
+---
+
+# AWS CDK はいいぞ！！
+
+(プロダクトでのご利用は計画的に)
 
 ---
 
@@ -230,7 +252,7 @@ TS の型に導かれる
 
 - <ExLink href="https://cureapp.co.jp">CureApp</ExLink>
 - アプリで医療機器を作ってる
-- TS, react, RN, Node.js, MongoDB
+- AWS, TS, react, RN, Node.js, MongoDB
 
 ---
 
