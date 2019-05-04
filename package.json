@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "slideKey": "cdk",
-  "slideTitle": "AWS CDK",
+  "slideTitle": "AWS CDK の話",
   "scripts": {
     "start": "mdx-deck deck.mdx",
     "build": "./build.sh"
@@ -24,5 +24,8 @@
     "react-grid-system": "4.x.x",
     "styled-components": "^4.2.0",
     "webpack": "^4.3.0"
+  },
+  "dependencies": {
+    "code-surfer": "^0.5.5"
   }
 }

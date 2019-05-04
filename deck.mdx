@@ -1,11 +1,20 @@
 import { Head, Image } from 'mdx-deck'
 import { Container, Row, Col } from 'react-grid-system'
+import { CodeSurfer } from 'mdx-deck-code-surfer'
+import theme from 'prism-react-renderer/themes/vsDarkPlus'
+
+import { showNumbers } from './consts'
 import HeadContents from './components/HeadContents.js'
 import Top from './components/Top.js'
 import ExLink from './components/ExLink.js'
 import packageJson from './package.json'
 import ogImage from './assets/images/og.png'
-import { CodeSurfer } from 'mdx-deck-code-surfer'
+import awsCdkCautionImage from './assets/images/aws-cdk-caution.png'
+import fileConstitutionImage from './assets/images/file-constitution.png'
+import cdkSynthImage from './assets/images/cdk-synth.png'
+import cdkDeployImage from './assets/images/cdk-deploy.png'
+import cdkResultImage from './assets/images/cdk-result.png'
+import staticSiteDist from './assets/images/staticSiteDist.png'
 
 <Head>
   <HeadContents
@@ -25,9 +34,9 @@ import { CodeSurfer } from 'mdx-deck-code-surfer'
 
 ## 今日話すこと
 
----
-
-かんがえちゅう
+- AWS CDK とは？
+- AWS CDK の書き方
+- サンプル
 
 ---
 
@@ -35,19 +44,135 @@ import { CodeSurfer } from 'mdx-deck-code-surfer'
 
 ---
 
+## AWS CDK とは？
+
+---
+
+### TL;DR
+
+TS を書くと AWS 環境が出来上がる
+
+---
+
+TS で書ける CFn(Cloud Formation) て感じ
+
+---
+
+CFn は(あの使いにくい)AWS コンソールをそのままいじっている感じ
+
+---
+
+CDK はより直感的
+
+---
+
+TS の型に導かれる
+
+---
+
+<img src={awsCdkCautionImage} style={{ width: '90vw' }} />
+
+---
+
+# AWS CDK の書き方
+
+---
+
+### 最小ファイル構成
+
+<img src={fileConstitutionImage} />
+
+---
+
 <CodeSurfer
-  title="Some Title"
-  code={require('!raw-loader!./assets/codes/static-site.ts').default}
+  title="package.json"
+  code={require('!raw-loader!./assets/codes/package.js').default}
+  lang="json"
+  showNumbers={showNumbers}
+  theme={theme}
+  steps={[{}, { lines: [11, 13] }, { range: [6, 10] }]}
+/>
+
+---
+
+<CodeSurfer
+  title="cdk.json"
+  code={'{ "app": "ts-node index.ts" }'}
+  lang="json"
+  showNumbers={showNumbers}
+  theme={theme}
+/>
+
+---
+
+<CodeSurfer
+  title="index.ts"
+  code={require('!raw-loader!./assets/codes/minimum.ts').default}
   lang="typescript"
-  showNumbers={false}
-  dark={false}
+  showNumbers={showNumbers}
+  theme={theme}
   steps={[
-    { notes: 'Start with this note' },
-    { lines: [6], notes: 'Note for the first step' },
-    { range: [5, 9] },
-    { tokens: { 9: [3, 4, 5] }, notes: 'Note for the third step' },
+    {},
+    { lines: [1, 4] },
+    { lines: [14, 16] },
+    { ranges: [[2, 2], [8, 10]] },
   ]}
 />
+
+---
+
+### cdk synth
+
+<img src={cdkSynthImage} />
+
+---
+
+### cdk deploy
+
+<img src={cdkDeployImage} style={{ width: '90vw' }} />
+
+---
+
+### s3 bucket できた
+
+<img src={cdkResultImage} />
+
+---
+
+やったね！
+
+---
+
+## サンプル
+
+---
+
+<CodeSurfer
+  title="Static Site"
+  code={require('!raw-loader!./assets/codes/static-site.ts').default}
+  lang="typescript"
+  showNumbers={showNumbers}
+  theme={theme}
+  steps={[
+    {},
+    { range: [10, 14] },
+    { range: [16, 19] },
+    { tokens: { 10: [2], 18: [0, 1, 2] } },
+    { range: [21, 32] },
+    { tokens: { 10: [2], 27: [4, 5, 6] } },
+    { range: [34, 39] },
+  ]}
+/>
+
+---
+
+<ExLink href="https://d7srgc5j9isfi.cloudfront.net/">できたページ</ExLink>
+
+---
+
+<ExLink href="https://github.com/yamatatsu/cdk-static-site-sample">
+  コードはこちら
+</ExLink>
 
 ---
 
