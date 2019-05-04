@@ -1,1 +1,1 @@
-export const showNumbers = true
+export const showNumbers = false
