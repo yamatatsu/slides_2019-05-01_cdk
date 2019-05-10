@@ -15,6 +15,7 @@ import cdkSynthImage from './assets/images/cdk-synth.png'
 import cdkDeployImage from './assets/images/cdk-deploy.png'
 import cdkResultImage from './assets/images/cdk-result.png'
 import staticSiteDist from './assets/images/staticSiteDist.png'
+import naniitteruka from './assets/images/naniitteruka.jpg'
 
 <Head>
   <HeadContents
@@ -54,25 +55,13 @@ TS を書くと AWS 環境が出来上がる
 
 ---
 
-TS で書ける CFn(Cloud Formation) て感じ
+<img src={naniitteruka} style={{}} />
+
+何言ってる分からｎ
 
 ---
 
-CFn は(あの使いにくい)AWS コンソールをそのままいじっている感じ
-
----
-
-CDK はより直感的
-
----
-
-TS の型に導かれる
-
----
-
-### 注意 !!!
-
-<img src={awsCdkCautionImage} style={{ width: '90vw' }} />
+見てみよう
 
 ---
 
@@ -145,6 +134,32 @@ TS の型に導かれる
 
 ---
 
+TS で書ける CFn(Cloud Formation) て感じ
+
+---
+
+CFn は(あの使いにくい)AWS コンソールをそのままいじっている感じ
+
+---
+
+CDK はより直感的
+
+---
+
+TS の型に導かれる
+
+---
+
+インフラ構成の変更をコードレビューできるよ！
+
+---
+
+### 注意 !!!
+
+<img src={awsCdkCautionImage} style={{ width: '90vw' }} />
+
+---
+
 ## サンプル
 
 ---
@@ -162,7 +177,7 @@ TS の型に導かれる
     { tokens: { 10: [2], 18: [0, 1, 2] } },
     { range: [21, 32] },
     { tokens: { 10: [2], 27: [4, 5, 6] } },
-    { range: [34, 39] },
+    // { range: [34, 39] },
     {},
   ]}
 />
@@ -190,7 +205,7 @@ TS の型に導かれる
     { range: [9, 13] },
     { range: [15, 17] },
     { tokens: { 9: [2], 16: [0, 1, 2] } },
-    { range: [19, 24] },
+    // { range: [19, 24] },
     {},
   ]}
 />
@@ -231,17 +246,13 @@ TS の型に導かれる
 
 ---
 
-## Links
+# Cloud Formation もいいぞ！！
 
-- <ExLink href="https://docs.aws.amazon.com/cdk/latest/guide/what-is.html">
-    公式
-  </ExLink>
-- <ExLink href="https://awslabs.github.io/aws-cdk/index.html">
-    API Refference
-  </ExLink>
-- <ExLink href="https://github.com/aws-samples/aws-cdk-examples/tree/master/typescript">
-    Examples
-  </ExLink>
+(プロダクトでガンガン使える)
+
+---
+
+誰にも共有せずにポチポチポチポチしてインフラ作ってるインフラエンジニアに「ポチポチインフラ？もう令和ですよ？」ってマウント取っていこうな！先日ポチポチインフラ弄ってしまって CFn テンプレートとの乖離を起こしてしまったおじさんとの約束だ！
 
 ---
 
@@ -257,6 +268,19 @@ TS の型に導かれる
 ---
 
 ## おわり。
+
+---
+
+## Links
+
+- <ExLink href="https://docs.aws.amazon.com/cdk/api/latest/">Docs</ExLink>
+- <ExLink href="https://github.com/awslabs/aws-cdk">Github</ExLink>
+- <ExLink href="https://docs.aws.amazon.com/cdk/latest/guide/what-is.html">
+    AWS Site
+  </ExLink>
+- <ExLink href="https://github.com/aws-samples/aws-cdk-examples/tree/master/typescript">
+    Examples
+  </ExLink>
 
 ---
 
